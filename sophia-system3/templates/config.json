@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "embedding_provider": "none",
+  "embedding_model": "text-embedding-3-small",
+  "reflection_trigger": "manual",
+  "guardian_tier3_enabled": true,
+  "consolidation_min_episodes": 5,
+  "user_mode": "single",
+  "current_user": "default"
+}

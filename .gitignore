@@ -13,8 +13,12 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# Exclude root lib/ but allow sophia-system3/lib/
+/lib/
 lib64/
+
+# Include sophia-system3/lib explicitly
+!sophia-system3/lib/
 parts/
 sdist/
 var/
