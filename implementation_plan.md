@@ -2,28 +2,46 @@
 
 **Status:** Phase 1 in progress (directory structure created)
 **Date:** 2024-12-28
+**Mode:** Continuous autonomous implementation
 
 ---
 
-## Resume Prompt
+## Resume Prompt (Autonomous Mode)
 
 ```
 Read implementation_plan.md and system3_claude_code_spec.md.
 
-Continue implementing System 3. Phase 1 directory structure is created at:
-/mnt/c/python/sophia/sophia-system3/
+AUTONOMOUS IMPLEMENTATION MODE:
+- Implement ALL 7 phases continuously without stopping for user confirmation
+- Do NOT pause at checkpoints - proceed directly to the next phase
+- Only stop if you encounter an unrecoverable error
+- Use the todo list to track progress across context compactions
+- Commit after completing each phase
 
-Next steps:
-1. Implement lib/models.py (Pydantic models from spec Appendix A, lines 2625-2762)
-2. Implement lib/locking.py (file lock protocol)
-3. Implement lib/storage.py (file I/O with locking)
-4. Create templates/config.json and templates/self_model.json
-5. Create install.sh
-6. Create skills/s3-init.md and skills/s3-status.md
-7. Validate Phase 1, then continue to Phase 2
+Phase 1 directory structure exists at: /mnt/c/python/sophia/sophia-system3/
 
-Follow the spec exactly. Create working code, not stubs.
+Execute phases in order:
+1. Foundation: models.py, locking.py, storage.py, templates, install.sh, s3-init.md, s3-status.md
+2. Hooks: guardian_tier1.sh, log_action.sh, session_end.sh
+3. Memory: retrieval.py, s3-recall.md, memory_agent.md
+4. Reflection: reflection_agent.md, s3-learn.md, s3-reflect.md
+5. Guardian: guardian_agent.md, config.py
+6. Consolidation: consolidation_agent.md
+7. Polish: CLAUDE.md.template, s3-refresh-identity.md, embeddings.py, tests, README.md, uninstall.sh
+
+Follow the spec EXACTLY. Create working code, not stubs.
+Reference spec line numbers in the Key Spec References table below.
 ```
+
+---
+
+## Execution Rules
+
+1. **No stopping** - Continue through all phases automatically
+2. **Use spec line numbers** - Each component has exact spec references below
+3. **Commit per phase** - Git commit after each phase completes
+4. **Track via todos** - Update todo list so progress survives compaction
+5. **Handle errors** - If something fails, fix it and continue (don't ask user)
 
 ---
 
@@ -117,11 +135,9 @@ Follow the spec exactly. Create working code, not stubs.
 
 ```
 /mnt/c/python/sophia/
-├── system3_claude_code_spec.md   # Main spec (2,811 lines)
+├── system3_claude_code_spec.md   # Main spec (2,811 lines) - THE SOURCE OF TRUTH
 ├── implementation_plan.md        # This file
 ├── README.md                     # GitHub readme
-├── checkpoint.md                 # Context recovery (local only)
-├── resume_prompt.md              # Resume prompts (local only)
 └── sophia-system3/               # Implementation directory
     ├── hooks/
     ├── skills/
@@ -133,4 +149,16 @@ Follow the spec exactly. Create working code, not stubs.
 
 ---
 
+## After Compaction Checklist
+
+If context was compacted, verify:
+1. Read this file (implementation_plan.md)
+2. Check which phases are marked [x] complete below
+3. Check todo list for current progress
+4. Continue from where you left off
+5. Reference spec lines for each component
+
+---
+
 *Plan created: 2024-12-28*
+*Updated: 2024-12-28 - Autonomous mode enabled*
